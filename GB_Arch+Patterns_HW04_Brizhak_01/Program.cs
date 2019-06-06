@@ -14,6 +14,10 @@ namespace GB_Arch_Patterns_HW04_Brizhak_01
     {
         static void Main(string[] args)
         {
+            Singleton instOne = Singleton.Inst;
+
+            Singleton instTwo = Singleton.Inst;
+
         }
     }
 }
