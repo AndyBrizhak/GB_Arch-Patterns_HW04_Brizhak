@@ -1,30 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GB_Arch_Patterns_HW04_Brizhak_01
+﻿namespace GB_Arch_Patterns_HW04_Brizhak_01
 {
-   public class Singleton
+    public class Singleton
     {
-        private static Singleton inst;
-        private static object objLock = new Object();
+        private static Singleton _inst;
+
+        /// <summary>
+        /// обьект содержащий блокируемый код
+        /// </summary>
+        private static readonly object ObjLock = new object();
 
         private Singleton() { }
+
+        /// <summary>
+        /// метод создания единственного экземпляра
+        /// </summary>
         public static Singleton Inst
         {
             get
             {
-                if (inst == null)
+                if (_inst == null)
                 {
-                    lock (objLock)
+                    lock (ObjLock)
                     {
-                        if (inst == null)
-                            inst = new Singleton();
+                        if (_inst == null)
+                            _inst = new Singleton();
                     }
                 }
-                return inst;
+                return _inst;
             }
         }
     }
