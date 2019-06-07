@@ -2,8 +2,10 @@
 
 namespace GB_Arch_Patterns_HW04_Brizhak_02
 {
-    class SingletonLazy
+    public class SingletonLazy
     {
+       private  SingletonLazy() {}
+
         /// <summary>
         /// отложенная инициализация 
         /// </summary>
@@ -15,19 +17,16 @@ namespace GB_Arch_Patterns_HW04_Brizhak_02
         /// <returns></returns>
         private static Func<SingletonLazy> InitFunc()
         {
-
-            return () => new SingletonLazy();
+           return () => new SingletonLazy();
         }
 
-        public SingletonLazy()
-        {
-        }
+       
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        internal static SingletonLazy GetLazyValue()
+        public static SingletonLazy GetLazyValue()
         {
             return _lazy.Value;
         }
