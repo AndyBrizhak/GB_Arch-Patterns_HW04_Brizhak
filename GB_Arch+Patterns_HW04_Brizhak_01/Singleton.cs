@@ -1,4 +1,6 @@
-﻿namespace GB_Arch_Patterns_HW04_Brizhak_01
+﻿using System;
+
+namespace GB_Arch_Patterns_HW04_Brizhak_01
 {
     public class Singleton
     {
@@ -20,13 +22,21 @@
             {
                 if (_inst == null)
                 {
-                    lock (ObjLock)
-                    {
-                        if (_inst == null)
-                            _inst = new Singleton();
-                    }
+                    LockMethod();
                 }
                 return _inst;
+            }
+        }
+
+        /// <summary>
+        /// Метод блокировки обьекта при создании нового класса
+        /// </summary>
+        private static void LockMethod()
+        {
+            lock (ObjLock)
+            {
+                if (_inst == null)
+                    _inst = new Singleton();
             }
         }
     }
